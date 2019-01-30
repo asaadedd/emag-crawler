@@ -1,0 +1,49 @@
+{
+  "name": "emag-crawler",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "webpack --watch",
+    "start": "node ./dist/bundle.js",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "dependencies": {
+    "@types/jsdom": "^12.2.1",
+    "@types/nodemailer": "^4.6.5",
+    "@types/handlebars": "^4.0.40",
+    "@types/mysql": "^2.15.5",
+    "@types/lodash": "^4.14.119",
+    "@types/node": "^10.12.18",
+    "jsdom": "^13.1.0",
+    "rxjs": "^6.3.3",
+    "axios": "^0.18.0",
+    "mysql": "^2.16.0",
+    "nodemailer": "^5.0.0",
+    "handlebars": "^4.0.12",
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.13",
+    "@types/jest-when": "^1.1.2",
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "html-loader": "^0.5.5",
+    "node-loader": "^0.6.0",
+    "raw-loader": "^1.0.0",
+    "ts-loader": "^5.3.3",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.4",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-node-externals": "^1.7.2",
+    "tslint-config-airbnb": "^5.11.1",
+    "jest": "^24.0.0",
+    "jest-when": "^2.2.0"
+  }
+}
