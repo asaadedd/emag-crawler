@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { CONFIG } from './config';
 import { isUndefined } from 'lodash';
-import momentJs from 'moment';
+import moment from 'moment';
 
 export class Logger {
     private static readonly MAXIMUM_NUMBER_OF_LINES: number = 1000;
@@ -10,7 +10,7 @@ export class Logger {
     private numberOfLines: number;
     private currentFileName: string;
 
-    constructor(private fileSystem = fs, private moment = momentJs) {
+    constructor(private fileSystem = fs, private momentJs = moment) {
         this.numberOfLines = 0;
         this.createNewFileIfNeeded();
     }
@@ -81,15 +81,15 @@ export class Logger {
     }
 
     private getInfoString(infoString: string): string {
-        return `${this.moment().format('DD/MM/YYYY HH:mm')} INFO : ${infoString}`;
+        return `${this.momentJs().format('DD/MM/YYYY HH:mm')} INFO : ${infoString}`;
     }
 
     private getErrorString(errorString: string, error: Error): string {
-        return `${this.moment().format('DD/MM/YYYY HH:mm')} ERROR : ${errorString} ${error.message}`;
+        return `${this.momentJs().format('DD/MM/YYYY HH:mm')} ERROR : ${errorString} ${error.message}`;
     }
 
     private getWarnString(infoString: string): string {
-        return `${this.moment().format('DD/MM/YYYY HH:mm')} WARNING : ${infoString}`;
+        return `${this.momentJs().format('DD/MM/YYYY HH:mm')} WARNING : ${infoString}`;
     }
 
     private static getFileNumber(fileName: string) {
