@@ -7,15 +7,16 @@ import initializeTableSql from './initializeTable.sql';
 export class Database {
     private connection: Connection;
 
-    constructor(private logger: Logger) {}
+    constructor(private logger: Logger, private mysql = { createConnection }) {}
 
     public async initialize(): Promise<void> {
         await this.connectToDB();
         await this.query(initializeTableSql).toPromise();
         const insert = 'INSERT INTO emag_crawler.products (ID, URL, price, stock)';
-        const valuesString = CONFIG.productsUrls.reduce((currentValuesString, productUrl: string, index) =>
-                `${currentValuesString} (${index}, '${productUrl}', NULL, NULL),`
-            ,                                           'VALUES');
+        const valuesString = CONFIG.productsUrls.reduce(
+            (currentValuesString, productUrl: string, index) =>
+                `${currentValuesString} (${index}, '${productUrl}', NULL, NULL),`,
+            'VALUES');
         await this.query(`${insert} ${valuesString.substring(0, valuesString.length - 1)}`).toPromise();
     }
 
@@ -33,7 +34,7 @@ export class Database {
     }
 
     private connectToDB() {
-        this.connection = createConnection(CONFIG.database);
+        this.connection = this.mysql.createConnection(CONFIG.database);
 
         return new Promise((resolve, reject) => {
             this.connection.connect((error) => {

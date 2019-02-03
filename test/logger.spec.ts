@@ -231,5 +231,5 @@ describe('class Logger', () => {
                 expectedMessage
             );
         });
-    })
+    });
 });
